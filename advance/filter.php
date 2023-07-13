@@ -31,7 +31,7 @@ if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // validasi url
-$url = "https://ssrahcantikk.com";
+$url = "https://ayangii.com";
 if(filter_var($url, FILTER_VALIDATE_URL)) {
   echo "url valid";
 } else {

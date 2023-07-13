@@ -95,11 +95,12 @@
         <div class="input-cont">
           <label for="pw">Password</label>
           <input type="password" name="pass" id="pass" placeholder="Password...">
-          <span class="passErr err">hell</span>
+          <span class="passErr err"></span>
         </div>
         <div class="input-cont">
           <label for="pw">Konfirmasi Password</label>
           <input type="password" name="cnfrm_pass" id="cnfrm_pass" placeholder="Konfirmasi Password...">
+          <span class="cnfrmPassErr err"></span>
         </div>
         <input type="submit" name="submit" value="Daftar">
       </div>
@@ -107,6 +108,7 @@
   <script>
 
       const passErr = document.querySelector(".passErr"),
+            cnfrmPassErr = document.querySelector(".cnfrmPassErr"),
             pass = document.querySelector("#pass"),
             cnfrmPass = document.querySelector("#cnfrm_pass"),
             name = document.querySelector("#name");
@@ -118,18 +120,21 @@
 
         const e = event,
           regex = /^[a-zA-Z\s]+$/;
+
+
         console.log(regex.test(name.value));
 
-        if (pass.value !== cnfrmPass.value) validateInput(cnfrmPass, passErr, "Password tidak cocok!", e);
+        if (pass.value !== cnfrmPass.value) 
+          validateInput(cnfrmPass, cnfrmPassErr, "Password tidak cocok", e);
         if(pass.value === "")
           validateInput(pass, passErr, " *Password tidak boleh kosong", e);
         if(!regex.test(name.value)) alert("hello");
       }
 
       function validateInput(item, itemErr, msg, e) {
+        e.preventDefault();
         item.style.border = "2px solid red";
         itemErr.innerText = msg;
-        e.preventDefault();
       }
 
     </script>
